@@ -1,34 +1,26 @@
 //CHUYEN DANH SACH KE SANG MA TRAN KE
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-int main()
-{
-	int n;
-    cin >> n;
-    string s;
-    vector<vector<int>> a(n + 1, vector<int>(n + 1, 0));
+
+vector<int> adj[1001];
+vector<pair<int,int>> edge;
+int a[1001][1001];
+int main(){
+    int n;
+    cin>>n;
     cin.ignore();
-    for (int i = 1; i <= n; i++)
-    {
-        getline(cin, s);
-        s += ' ';
-        int k = 0;
-        for (int j = 0; j < s.size(); j++)
-        {
-            if (s[j] >= '0' && s[j] <= '9')
-                k = k * 10 + s[j] - '0';
-            else
-            {
-                a[i][k] = 1;
-                k = 0;
-            }
+    for(int i=1;i<=n;i++){
+        string s,num;
+        getline(cin,s);
+        stringstream ss(s);
+        while(ss>>num){
+            a[i][stoi(num)]=1;
         }
     }
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= n; j++)
-            cout << a[i][j] << " ";
-        cout << endl;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
     }
-	return 0;
 }

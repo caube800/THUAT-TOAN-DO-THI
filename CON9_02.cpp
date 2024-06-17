@@ -1,28 +1,22 @@
 //CHUYEN TU DANH SACH KE SANG DANH SACH CANH
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define mod 1000000007
+vector<pair<int,int>> edge;
+int main(){
+    int n;
+    cin>>n;
+    cin.ignore();
+    for(int i=1;i<=n;i++){
+        string s,num;
+        getline(cin,s);
+        stringstream ss(s);
+        while(ss>>num){
+            if(stoi(num)>i)
+            edge.push_back({i,stoi(num)});
 
-int main()
-{
-   int n;
-   cin>>n;
-   vector<pair<int,int>>v;
-   int x;
-   char c;
-   for(int i=1;i<=n;i++){
-    while(scanf("%d%c",&x,&c)!=EOF){
-        if(x>i){
-        v.push_back({i,x});
-        }
-        if(c=='\n'){
-            break;
         }
     }
-   }
-   for(auto it:v){
-    cout<<it.first<<" "<<it.second<<endl;
-   }
-    return 0;
+    for(auto x:edge){
+        cout<<x.first<<" "<<x.second<<endl;
+    }
 }
